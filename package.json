@@ -1,0 +1,8 @@
+{
+    "name": "expressXHRFileUploadExample",
+    "version": "1.0.0",
+    "dependencies": {
+        "express": "4.14.0",
+        "body-parser": "1.15.2"
+    }
+}

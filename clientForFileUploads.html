@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  </head>
+  <body style="background-color: #fefdfe">
+    <div class="container">
+
+      <h4 class="center-align">Please upload a file (an mp3 would be best)</h4>
+
+      <div class="center-align">
+        <h5>
+        <input id="input" type="file" placeholder="Your file" style="font-family: 'Cinzel', serif; width: 55vw;" >
+        <input id="button" class="center-align" type="submit" value="Submit" onclick="
+          var fileInput = document.getElementById('input');
+          var file = fileInput.files[0];
+
+          var xhr = new XMLHttpRequest();
+          xhr.upload.addEventListener('progress', onprogressHandler, false);
+          xhr.open('POST', 'http://localhost:3003/songs', true);
+          xhr.setRequestHeader('Content-type', 'application/octet-stream');
+          xhr.send(file);
+
+          function onprogressHandler(evt) {
+              var percent = evt.loaded/evt.total*100;
+              console.log('Upload progress: ' + percent + '%');
+          }
+        "/></h5>
+      </div>
+    </div>
+  </body>
+</html>
